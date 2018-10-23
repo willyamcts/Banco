@@ -3,19 +3,19 @@ package banco.modelo;
 
 public class Conta implements Imprimivel {
 	private int id;
-	private int agencia;
-	private int numero;
+	private String titulo;
+	private int anoPublicacao;
 	private Cliente cliente;
-	private double saldo;
+	private String editora;
 	
 	public Conta() { }
 	
-	public Conta(int id, int agencia, int numero, Cliente cliente, double saldo) {
+	public Conta(int id, String titulo, int anoPublicacao, String editora, Cliente cliente) {
 		this.id = id;
-		this.agencia = agencia;
-		this.numero = numero;
+		this.titulo = titulo;
+		this.anoPublicacao = anoPublicacao;
 		this.cliente = cliente;
-		this.saldo = saldo;
+		this.editora = editora;
 	}
 	
 	public int getId() {
@@ -26,28 +26,28 @@ public class Conta implements Imprimivel {
 		this.id = id;
 	}
 
-	public double getSaldo() {
-		return saldo;
+	public String getSaldo() {
+		return editora;
 	}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+	public void setSaldo(String editora) {
+		this.editora = editora;
 	}
 
-	public int getAgencia() {
-		return agencia;
+	public String getAgencia() {
+		return titulo;
 	}
 	
-	public void setAgencia(int agencia) {
-		this.agencia = agencia;
+	public void setAgencia(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public int getNumero() {
-		return numero;
+		return anoPublicacao;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumero(int anoPublicacao) {
+		this.anoPublicacao = anoPublicacao;
 	}
 	
 	public Cliente getCliente() {

@@ -51,9 +51,8 @@ public class ContaDao implements Dao<Conta> {
 		Conta conta = new Conta();
 			
 		conta.setId( rs.getInt("id") );
-		conta.setAgencia( rs.getInt("agencia") );
-		conta.setNumero( rs.getInt("numero"));
-		conta.setSaldo( rs.getDouble("saldo") );
+		conta.setNome( rs.getString("numero"));
+		conta.setCpf( rs.getLong("saldo") );
 		conta.setCliente( new Cliente(rs.getInt("cliente_id"), rs.getString("nome"), 
 				rs.getString("endereco"), rs.getLong("cpf"),  rs.getLong("rg"),
 				rs.getLong("telefone"), rs.getDouble("renda_mensal")) );
@@ -122,7 +121,7 @@ public class ContaDao implements Dao<Conta> {
 			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, conta.getAgencia());
 			stmt.setInt(2, conta.getCliente().getId());
-			stmt.setInt(3, conta.getNumero());
+			stmt.setInt(3, conta.getCpf());
 			stmt.setDouble(4, conta.getSaldo());
 			
 			stmt.executeUpdate();
@@ -168,7 +167,7 @@ public class ContaDao implements Dao<Conta> {
 			stmt = conn.prepareStatement(UPDATE);
 			stmt.setInt(1, conta.getAgencia());
 			stmt.setInt(2, conta.getCliente().getId());
-			stmt.setInt(3, conta.getNumero());
+			stmt.setInt(3, conta.getCpf());
 			stmt.setDouble(4, conta.getSaldo());
 			stmt.setInt(5, conta.getId());
 			

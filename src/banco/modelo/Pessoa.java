@@ -2,22 +2,18 @@ package banco.modelo;
 
 public class Pessoa {
 	private int id;
-	private String nome;
-	private String endereco;
-	private long cpf;
-	private long rg;
-	private long telefone;
+	private String titulo;
+	private String editora;
+	private int anoPublicacao;
+	private Autor autor;
 	
 	public Pessoa() { }
 	
-	public Pessoa(int id, String nome, String endereco, long cpf, long rg,
-			long telefone) {
+	public Pessoa(int id, String titulo, String editora, int anoPublicacao, Autor autor) {
 		this.id = id;
-		this.nome = nome;
-		this.endereco = endereco;
-		this.cpf = cpf;
-		this.rg = rg;
-		this.telefone = telefone;
+		this.titulo = titulo;
+		this.editora = editora;
+		this.anoPublicacao = anoPublicacao;
 	}
 
 	public int getId() {
@@ -29,61 +25,38 @@ public class Pessoa {
 	}
 
 	public String getNome() {
-		return nome;
+		return titulo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getEditora() {
+		return editora;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEditora(String editora) {
+		this.editora = editora;
 	}
 
-	public long getCpf() {
-		return cpf;
+	public int getCpf() {
+		return anoPublicacao;
 	}
 
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
+	public void setCpf(int anoPublicacao) {
+		this.anoPublicacao = anoPublicacao;
 	}
 
-	public long getRg() {
-		return rg;
-	}
-
-	public void setRg(long rg) {
-		this.rg = rg;
-	}
-
-	public long getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(long telefone) {
-		this.telefone = telefone;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "nome: " + getNome() 
-				+ "\nendere�o: " + getEndereco()
+		return "titulo: " + getNome() 
+				+ "\nendere�o: " + getEditora()
 				+ "\nCPF: " 
 						+ String.valueOf(getCpf())
 						.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", 
-								"$1.$2.$3-$4")
-			    + "\nRG: "
-						+ String.valueOf(getRg())
-						.replaceFirst("(\\d{1})(\\d{3})(\\d{3})(\\d*)", 
-								"$1.$2.$3")
-				+ "\nTelefone: "	
-					+ String.valueOf(getTelefone())
-					.replaceFirst("(\\d{2})(\\d{4})(\\d{4})", 
-							"($1) $2-$3");
+								"$1.$2.$3-$4");
 
 	}
 	
