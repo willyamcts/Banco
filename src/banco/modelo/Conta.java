@@ -6,11 +6,11 @@ public class Conta implements Imprimivel {
 	private String titulo;
 	private int anoPublicacao;
 	private String editora;
-	private Autor autor;
+	private Cliente autor;
 	
 	public Conta() { }
 	
-	public Conta(int id, String titulo, int anoPublicacao, String editora, Autor autor) {
+	public Conta(int id, String titulo, int anoPublicacao, String editora, Cliente autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.anoPublicacao = anoPublicacao;
@@ -77,7 +77,7 @@ public class Conta implements Imprimivel {
 
 	@Override
 	public String[] getColunas() {
-		String[] colunas = {"id", "AgÃªncia", "NÃºmero", "Saldo", "Id Cliente"};
+		String[] colunas = {"id", "Titulo", "Ano de publicação", "Editora", "ID Autor"};
 		return colunas;
 	}
 	

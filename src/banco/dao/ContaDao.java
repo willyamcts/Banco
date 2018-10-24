@@ -13,13 +13,13 @@ import banco.modelo.Conta;
 
 public class ContaDao implements Dao<Conta> {
 	
-	private static final String GET_BY_ID = "SELECT * FROM conta NATURAL JOIN cliente WHERE id = ?";
-	private static final String GET_ALL = "SELECT * FROM conta NATURAL JOIN cliente";
-	private static final String INSERT = "INSERT INTO conta (agencia, cliente_id, numero, saldo) "
-			+ "VALUES (?, ?, ?, ?)";
-	private static final String UPDATE = "UPDATE conta SET agencia = ?, cliente_id = ?, numero = ?, "
-			+ "saldo = ? WHERE id = ?";
-	private static final String DELETE = "DELETE FROM conta WHERE id = ?";
+	private static final String GET_BY_ID = "SELECT * FROM livro NATURAL JOIN autor WHERE id = ?";
+	private static final String GET_ALL = "SELECT * FROM livro NATURAL JOIN autor";
+	private static final String INSERT = "INSERT INTO livro (id, titulo, anoPublicacao, editora, autor) "
+			+ "VALUES (?, ?, ?, ?, ?)";
+	private static final String UPDATE = "UPDATE livro SET id = ?, titulo = ?, anoPublicacao = ?, "
+			+ "editora = ? WHERE autor = ?";
+	private static final String DELETE = "DELETE FROM livro WHERE id = ?";
 	
 	public ContaDao() {
 		try {
@@ -30,12 +30,12 @@ public class ContaDao implements Dao<Conta> {
 	}
 	
 	private void createTable() throws SQLException {
-	    final String sqlCreate = "CREATE TABLE IF NOT EXISTS conta"
+	    final String sqlCreate = "CREATE TABLE IF NOT EXISTS livro"
 	            + "  (id           INTEGER,"
 	            + "   titulo      VARCHAR(50),"
 	            + "   anoPublicacao   INTEGER,"
 	            + "   editora	   VARCHAR(50),"
-	            + "   FOREIGN KEY (cliente_id) REFERENCES cliente(id),"
+	            + "   FOREIGN KEY (autor_id) REFERENCES autor(id),"
 	            + "   PRIMARY KEY (id))";
 	    
 	    Connection conn = DbConnection.getConnection();

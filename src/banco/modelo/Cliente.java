@@ -20,22 +20,23 @@ public class Cliente extends Pessoa implements Imprimivel {
 		this.rendaMensal = rendaMensal;
 	}
 
+	/*
 	@Override
 	public String toString() {
 		return super.toString()
 				+ String.format("\nRenda mensal: R$ %.2f", 
 						getRendaMensal());
 	}
+	*/
 
 	@Override
 	public String imprimeEmLista() {
-		return String.format("%d\t%s\t%d\t%d%.2f", getId(), getNome(), getCpf(), 
-				getRendaMensal());
+		return String.format("%d\t%s\t%d", getId(), getNome(), getCpf());
 	}
 
 	@Override
 	public String[] getColunas() {
-		String[] colunas = {"id", "Nome", "Endereço", "CPF", "RG", "Telefone", "Renda Mensal"};
+		String[] colunas = {"id", "Nome", "CPF"};
 		return colunas;
 	}
 	

@@ -12,13 +12,12 @@ import banco.modelo.Cliente;
 
 public class ClienteDao implements Dao<Cliente> {
 	
-	private static final String GET_BY_ID = "SELECT * FROM cliente WHERE id = ?";
-	private static final String GET_ALL = "SELECT * FROM cliente";
-	private static final String INSERT = "INSERT INTO cliente (nome, rg, cpf, endereco, telefone, renda_mensal) "
-			+ "VALUES (?, ?, ?, ?, ?, ?)";
-	private static final String UPDATE = "UPDATE cliente SET nome = ?, rg = ?, cpf = ?, "
-			+ "endereco = ?, telefone = ?, renda_mensal = ? WHERE id = ?";
-	private static final String DELETE = "DELETE FROM cliente WHERE id = ?";
+	private static final String GET_BY_ID = "SELECT * FROM autor WHERE id = ?";
+	private static final String GET_ALL = "SELECT * FROM autor";
+	private static final String INSERT = "INSERT INTO autor (id, nome, cpf) "
+			+ "VALUES (?, ?, ?)";
+	private static final String UPDATE = "UPDATE autor SET id = ?, nome = ?, cpf = ?";
+	private static final String DELETE = "DELETE FROM autor WHERE id = ?";
 	
 	public ClienteDao() {
 		try {
@@ -30,11 +29,10 @@ public class ClienteDao implements Dao<Cliente> {
 	}
 	
 	private void createTable() throws SQLException {
-	    String sqlCreate = "CREATE TABLE IF NOT EXISTS cliente"
+	    String sqlCreate = "CREATE TABLE IF NOT EXISTS autor"
 	            + "  (id           INTEGER,"
 	            + "   nome            VARCHAR(50),"
 	            + "   cpf			  BIGINT,"
-	            + "   renda_mensal       DOUBLE,"
 	            + "   PRIMARY KEY (id))";
 	    
 	    Connection conn = DbConnection.getConnection();
@@ -54,7 +52,7 @@ public class ClienteDao implements Dao<Cliente> {
 		cliente.setId( rs.getInt("id") );
 		cliente.setNome( rs.getString("nome") );
 		cliente.setCpf( rs.getLong("cpf") );
-		cliente.setRendaMensal( rs.getDouble("renda_mensal") );
+		//cliente.setRendaMensal( rs.getDouble("renda_mensal") );
 	
 		return cliente;
     }
@@ -76,7 +74,7 @@ public class ClienteDao implements Dao<Cliente> {
 				cliente = getClienteFromRS(rs);
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao obter cliente pela chave.", e);
+			throw new RuntimeException("Erro ao obter autor pela chave.", e);
 		} finally {
 			close(conn, stmt, rs);
 		}
@@ -102,7 +100,7 @@ public class ClienteDao implements Dao<Cliente> {
 			}			
 			
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao obter todos os clientes.", e);
+			throw new RuntimeException("Erro ao obter todos os autores.", e);
 		} finally {
 			close(conn, stmt, rs);
 		}
@@ -119,8 +117,7 @@ public class ClienteDao implements Dao<Cliente> {
 		try {
 			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, cliente.getNome());
-			stmt.setLong(3, cliente.getCpf());
-			stmt.setDouble(6, cliente.getRendaMensal());
+			stmt.setLong(2, cliente.getCpf());
 			
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
@@ -129,7 +126,7 @@ public class ClienteDao implements Dao<Cliente> {
 				cliente.setId(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao inserir cliente.", e);
+			throw new RuntimeException("Erro ao inserir autor.", e);
 		}finally {
 			close(conn, stmt, rs);
 		}
@@ -148,7 +145,7 @@ public class ClienteDao implements Dao<Cliente> {
 			
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao remover cliente.", e);
+			throw new RuntimeException("Erro ao remover autor.", e);
 		} finally {
 			close(conn, stmt, null);
 		}
@@ -169,7 +166,7 @@ public class ClienteDao implements Dao<Cliente> {
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			throw new RuntimeException("Erro ao atualizar cliente.", e);
+			throw new RuntimeException("Erro ao atualizar autor.", e);
 		} finally {
 			close(conn, stmt, null);
 		}
