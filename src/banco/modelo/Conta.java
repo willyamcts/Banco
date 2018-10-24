@@ -5,16 +5,15 @@ public class Conta implements Imprimivel {
 	private int id;
 	private String titulo;
 	private int anoPublicacao;
-	private Cliente cliente;
 	private String editora;
+	private Autor autor;
 	
 	public Conta() { }
 	
-	public Conta(int id, String titulo, int anoPublicacao, String editora, Cliente cliente) {
+	public Conta(int id, String titulo, int anoPublicacao, String editora, Autor autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.anoPublicacao = anoPublicacao;
-		this.cliente = cliente;
 		this.editora = editora;
 	}
 	
@@ -26,19 +25,12 @@ public class Conta implements Imprimivel {
 		this.id = id;
 	}
 
-	public String getSaldo() {
-		return editora;
-	}
 
-	public void setSaldo(String editora) {
-		this.editora = editora;
-	}
-
-	public String getAgencia() {
+	public String getTitulo() {
 		return titulo;
 	}
 	
-	public void setAgencia(String titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
@@ -49,20 +41,26 @@ public class Conta implements Imprimivel {
 	public void setNumero(int anoPublicacao) {
 		this.anoPublicacao = anoPublicacao;
 	}
-	
-	public Cliente getCliente() {
-		return cliente;
+		
+	public void setCliente(String editora) {
+		this.editora = editora;
 	}
 	
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public String getEditora() {
+		return editora;
 	}
+	
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+	
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "AgÃªncia: " + getAgencia()		
-			+ "\nNÃºmero: " + getNumero()
+		return "Titulo: " + getTitulo()	
+			+ "\nAno de publicação: " + getNumero()
+			+ "\nEditora: " + getEditora()
 			+ "\nCliente: " + getCliente()
 			+ String.format("\nSaldo: R$ %.2f", 
 					getSaldo());
@@ -70,8 +68,8 @@ public class Conta implements Imprimivel {
 
 	@Override
 	public String imprimeEmLista() {
-		return String.format("%d\t%d\t%d\t%.2f\t%d\t%s", getId(), getAgencia(), getNumero(), getSaldo(), 
-				getCliente().getId(), getCliente().getNome());
+		return String.format("%d\t%s\t%d\t%s\t%s", getId(), getTitulo(), getNumero(), getEditora(), 
+				getCliente().getNome());
 	}
 
 	@Override

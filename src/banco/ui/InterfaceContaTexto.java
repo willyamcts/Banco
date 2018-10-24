@@ -28,31 +28,31 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 	}
 
 	private Conta obtemDadosConta(Conta conta) {
-		System.out.print("Insira o número da conta: ");
-		int numero = entrada.nextInt();
+		System.out.print("Insira o titulo do livro: ");
+		String titulo = entrada.nextLine();
 		
-		System.out.print("Insira o número da agência: ");
-		int agencia = entrada.nextInt();
+		System.out.print("Insira o ano da publica��o: ");
+		int anoPublicacao = entrada.nextInt();
 		
-		System.out.print("Insira o saldo: ");
-		double saldo = entrada.nextDouble();
+		System.out.print("Insira a editora: ");
+		String editora = entrada.nextLine();
 		
-		System.out.print("Insira o ID do cliente: ");
-		int idCliente = entrada.nextInt();
+		System.out.print("Insira o ID do autor: ");
+		int idAutor = entrada.nextInt();
 		
-		Cliente cliente = clienteDao.getByKey(idCliente);
+		Cliente cliente = clienteDao.getByKey(idAutor);
 		
-		return new Conta(0, agencia, numero, cliente, saldo);
+		return new Conta(0, titulo, anoPublicacao, editora, autor);
 	}
 
 	@Override
 	public void listarTodos() {
 		List<Conta> contas = dao.getAll();
 		
-		System.out.println("Lista de contas");
+		System.out.println("Lista de livros: ");
 		System.out.println();
 		
-		System.out.println("id\tAgência\tNúmero\tSaldo\tID do Cliente\tNome do Cliente");
+		System.out.println("id\tTitulo\tAno de publicacao\tEditora\tAutor");
 		
 		for (Conta conta : contas) {
 			imprimeItem(conta);
@@ -63,10 +63,10 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 	public void editar() {
 		listarTodos();
 		
-		System.out.println("Editar conta");
+		System.out.println("Editar livro");
 		System.out.println();
 		
-		System.out.print("Entre o id da conta: ");
+		System.out.print("Entre o id do livro: ");
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		
@@ -83,10 +83,10 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 	public void excluir() {
 		listarTodos();
 		
-		System.out.println("Excluir conta");
+		System.out.println("Excluir livro");
 		System.out.println();
 		
-		System.out.print("Entre o id da conta: ");
+		System.out.print("Entre o id do livro: ");
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		

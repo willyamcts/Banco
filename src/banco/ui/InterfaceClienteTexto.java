@@ -14,34 +14,42 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 		dao = new ClienteDao();
 	}
 	
-	private Cliente obtemDadosLivro(Cliente cliente) {
-
-		System.out.println("Insira o tÌtulo do livro: ");
-		String titulo = entrada.nextLine();
+	private Cliente obtemDadosCliente(Cliente cliente) {
 		
-		System.out.println("Insira o ano de publicaÁ„o: ");
-		int anoPublicacao = entrada.nextInt();
+		System.out.print("Insira o nome do cliente: ");
+		String nome = entrada.nextLine();
+		
+		System.out.println("Insira o RG do cliente (somente n√∫meros): ");
+		long rg = entrada.nextLong();
 		entrada.nextLine();
 		
-		System.out.println("Insira a editora: ");
-		String editora = entrada.nextLine();
+		System.out.println("Insira o CPF do cliente (somente n√∫meros): ");
+		long cpf = entrada.nextLong();
+		entrada.nextLine();
+		
+		System.out.println("Insira o endereco do cliente: ");
+		String endereco = entrada.nextLine();
 		
 		System.out.println("Insira o telefone do cliente (somente n√∫meros): ");
-		Autor autor = entrada.nextLong();
+		long telefone = entrada.nextLong();
 		entrada.nextLine();
 		
-		Cliente novoLivro = new Cliente(0, titulo, anoPublicacao, editora, autor);
+		System.out.println("Insira a renda mensal do cliente (XXXXX,XX): ");
+		double renda = entrada.nextDouble();
+		entrada.nextLine();
 		
-		return novoLivro;
+		Cliente novoCliente = new Cliente(0, nome, endereco, cpf, rg, telefone, renda);
+		
+		return novoCliente;
 	}
 	
 	@Override
 	public void adicionar() {
-		System.out.println("Adicionar livro");
+		System.out.println("Adicionar cliente");
 		System.out.println();
 		
-		Cliente novoLivro = obtemDadosLivro(null);	
-		dao.insert(novoLivro);
+		Cliente novoCliente = obtemDadosCliente(null);	
+		dao.insert(novoCliente);
 		
 	}
 
@@ -49,10 +57,10 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	public void listarTodos() {
 		List<Cliente> clientes = dao.getAll();
 		
-		System.out.println("Lista de livros");
+		System.out.println("Lista de clientes");
 		System.out.println();
 		
-		System.out.println("id\tTitulo\tAno de Publicacao\tEditora\tAutor");
+		System.out.println("id\tNome\tEndereco\tCPF\tRG\tTelefone\tRenda Mensal");
 		
 		for (Cliente cliente : clientes) {
 			imprimeItem(cliente);
@@ -64,20 +72,20 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	public void editar() {
 		listarTodos();
 		
-		System.out.println("Editar livro");
+		System.out.println("Editar cliente");
 		System.out.println();
 		
-		System.out.print("Entre o id do livro: ");
+		System.out.print("Entre o id do cliente: ");
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		
-		Cliente livroAModifcar = dao.getByKey(id);
+		Cliente clienteAModifcar = dao.getByKey(id);
 		
-		Cliente novoLivro = obtemDadosLivro(livroAModifcar);
+		Cliente novoCliente = obtemDadosCliente(clienteAModifcar);
 		
-		novoLivro.setId(id);
+		novoCliente.setId(id);
 		
-		dao.update(novoLivro);
+		dao.update(novoCliente);
 		
 	}
 
