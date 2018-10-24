@@ -33,10 +33,7 @@ public class ClienteDao implements Dao<Cliente> {
 	    String sqlCreate = "CREATE TABLE IF NOT EXISTS cliente"
 	            + "  (id           INTEGER,"
 	            + "   nome            VARCHAR(50),"
-	            + "   rg	          BIGINT,"
 	            + "   cpf			  BIGINT,"
-	            + "   endereco           VARCHAR(255),"
-	            + "   telefone           BIGINT,"
 	            + "   renda_mensal       DOUBLE,"
 	            + "   PRIMARY KEY (id))";
 	    
@@ -56,10 +53,7 @@ public class ClienteDao implements Dao<Cliente> {
 			
 		cliente.setId( rs.getInt("id") );
 		cliente.setNome( rs.getString("nome") );
-		cliente.setRg( rs.getLong("rg") );
 		cliente.setCpf( rs.getLong("cpf") );
-		cliente.setEndereco( rs.getString("endereco") );
-		cliente.setTelefone( rs.getLong("telefone") );
 		cliente.setRendaMensal( rs.getDouble("renda_mensal") );
 	
 		return cliente;
@@ -125,10 +119,7 @@ public class ClienteDao implements Dao<Cliente> {
 		try {
 			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, cliente.getNome());
-			stmt.setLong(2, cliente.getRg());
 			stmt.setLong(3, cliente.getCpf());
-			stmt.setString(4, cliente.getEndereco());
-			stmt.setLong(5, cliente.getTelefone());
 			stmt.setDouble(6, cliente.getRendaMensal());
 			
 			stmt.executeUpdate();
@@ -171,10 +162,7 @@ public class ClienteDao implements Dao<Cliente> {
 		try {
 			stmt = conn.prepareStatement(UPDATE);
 			stmt.setString(1, cliente.getNome());
-			stmt.setLong(2, cliente.getRg());
 			stmt.setLong(3, cliente.getCpf());
-			stmt.setString(4, cliente.getEndereco());
-			stmt.setLong(5, cliente.getTelefone());
 			stmt.setDouble(6, cliente.getRendaMensal());
 			stmt.setInt(7, cliente.getId());
 			

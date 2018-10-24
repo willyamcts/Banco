@@ -22,7 +22,7 @@ public class InterfaceTexto {
 	}
 	
 	private void imprimeMenu() {
-		System.out.println("Contas Bancárias");
+		//System.out.println("Contas Bancárias");
 		System.out.println();
 		
 		switch (estadoAtual) {
@@ -39,7 +39,7 @@ public class InterfaceTexto {
 		System.out.println("0 - Sair");
 		
 		System.out.println();
-		System.out.print("Escolha uma opção: ");	
+		System.out.print("Escolha uma op��o: ");	
 	}
 	
 	private int leOpcao() {
@@ -49,22 +49,22 @@ public class InterfaceTexto {
 	}
 	
 	private void imprimeMenuPrincipal() {
-		System.out.println("1 - Administração de Clientes");
-		System.out.println("2 - Administração de Contas");
+		System.out.println("1 - Administrar Autores");
+		System.out.println("2 - Administrar Livros");
 	}
 	
 	private void imprimeMenuCliente() {
-		System.out.println("1 - Adicionar cliente");
-		System.out.println("2 - Editar cliente");
-		System.out.println("3 - Excluir cliente");
-		System.out.println("4 - Listar clientes");
+		System.out.println("1 - Adicionar autor");
+		System.out.println("2 - Editar autor");
+		System.out.println("3 - Excluir autor");
+		System.out.println("4 - Listar autores");
 	}
 	
 	private void imprimeMenuConta() {
-		System.out.println("1 - Adicionar conta");
-		System.out.println("2 - Editar conta");
-		System.out.println("3 - Excluir conta");
-		System.out.println("4 - Listar contas");
+		System.out.println("1 - Adicionar livro");
+		System.out.println("2 - Editar livro");
+		System.out.println("3 - Excluir livro");
+		System.out.println("4 - Listar livros");
 	}
 		
 	public void executa() {
@@ -94,7 +94,7 @@ public class InterfaceTexto {
 					subMenu.listarTodos();
 					break;
 				default:
-					System.out.println("Opção Inválida. Tente novamente!");
+					System.out.println("Opera��o inv�lida. Tente novamente!");
 				}
 			}
 			

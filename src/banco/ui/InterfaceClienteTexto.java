@@ -16,36 +16,21 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	
 	private Cliente obtemDadosCliente(Cliente cliente) {
 		
-		System.out.print("Insira o nome do cliente: ");
+		System.out.print("Insira o nome do autor: ");
 		String nome = entrada.nextLine();
 		
-		System.out.println("Insira o RG do cliente (somente números): ");
-		long rg = entrada.nextLong();
-		entrada.nextLine();
-		
-		System.out.println("Insira o CPF do cliente (somente números): ");
+		System.out.println("Insira o CPF do autor (somente numeros): ");
 		long cpf = entrada.nextLong();
 		entrada.nextLine();
 		
-		System.out.println("Insira o endereco do cliente: ");
-		String endereco = entrada.nextLine();
+		Cliente novoAutor = new Cliente(0, nome, cpf);
 		
-		System.out.println("Insira o telefone do cliente (somente números): ");
-		long telefone = entrada.nextLong();
-		entrada.nextLine();
-		
-		System.out.println("Insira a renda mensal do cliente (XXXXX,XX): ");
-		double renda = entrada.nextDouble();
-		entrada.nextLine();
-		
-		Cliente novoCliente = new Cliente(0, nome, endereco, cpf, rg, telefone, renda);
-		
-		return novoCliente;
+		return novoAutor;
 	}
 	
 	@Override
 	public void adicionar() {
-		System.out.println("Adicionar cliente");
+		System.out.println("Adicionar autor");
 		System.out.println();
 		
 		Cliente novoCliente = obtemDadosCliente(null);	
@@ -57,10 +42,10 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	public void listarTodos() {
 		List<Cliente> clientes = dao.getAll();
 		
-		System.out.println("Lista de clientes");
+		System.out.println("Lista de autores");
 		System.out.println();
 		
-		System.out.println("id\tNome\tEndereco\tCPF\tRG\tTelefone\tRenda Mensal");
+		System.out.println("id\tNome\tCPFtRenda Mensal");
 		
 		for (Cliente cliente : clientes) {
 			imprimeItem(cliente);
@@ -72,10 +57,10 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	public void editar() {
 		listarTodos();
 		
-		System.out.println("Editar cliente");
+		System.out.println("Editar autor");
 		System.out.println();
 		
-		System.out.print("Entre o id do cliente: ");
+		System.out.print("Entre o id do autor: ");
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		
@@ -93,10 +78,10 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 	public void excluir() {
 		listarTodos();
 		
-		System.out.println("Excluir cliente");
+		System.out.println("Excluir autor");
 		System.out.println();
 		
-		System.out.print("Entre o id do cliente: ");
+		System.out.print("Entre o id do autor: ");
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		

@@ -32,9 +32,9 @@ public class ContaDao implements Dao<Conta> {
 	private void createTable() throws SQLException {
 	    final String sqlCreate = "CREATE TABLE IF NOT EXISTS conta"
 	            + "  (id           INTEGER,"
-	            + "   titulo      VARCHAR2,"
+	            + "   titulo      VARCHAR(50),"
 	            + "   anoPublicacao   INTEGER,"
-	            + "   editora	   VARCHAR2,"
+	            + "   editora	   VARCHAR(50),"
 	            + "   FOREIGN KEY (cliente_id) REFERENCES cliente(id),"
 	            + "   PRIMARY KEY (id))";
 	    
@@ -53,9 +53,8 @@ public class ContaDao implements Dao<Conta> {
 		conta.setTitulo( rs.getString("titulo") );
 		conta.setNumero( rs.getInt("anoPublicacao"));
 		conta.setEditora( rs.getString("editora") );
-		conta.setCliente( new Cliente(rs.getInt("cliente_id"), rs.getString("nome"), 
-				rs.getString("endereco"), rs.getLong("cpf"),  rs.getLong("rg"),
-				rs.getLong("telefone"), rs.getDouble("renda_mensal")) );
+		conta.setCliente( new Cliente(rs.getInt("id"), rs.getString("nome"), 
+				rs.getLong("cpf")) );
 	
 		return conta;
     }
@@ -119,10 +118,9 @@ public class ContaDao implements Dao<Conta> {
 		
 		try {
 			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, conta.getAgencia());
+			stmt.setInt(1, conta.getId());
 			stmt.setInt(2, conta.getCliente().getId());
 			stmt.setInt(3, conta.getNumero());
-			stmt.setDouble(4, conta.getSaldo());
 			
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
@@ -165,10 +163,9 @@ public class ContaDao implements Dao<Conta> {
 		
 		try {
 			stmt = conn.prepareStatement(UPDATE);
-			stmt.setInt(1, conta.getAgencia());
+			stmt.setString(1, conta.getTitulo());
 			stmt.setInt(2, conta.getCliente().getId());
 			stmt.setInt(3, conta.getNumero());
-			stmt.setDouble(4, conta.getSaldo());
 			stmt.setInt(5, conta.getId());
 			
 			stmt.executeUpdate();

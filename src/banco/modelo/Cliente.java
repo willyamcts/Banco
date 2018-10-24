@@ -6,9 +6,8 @@ public class Cliente extends Pessoa implements Imprimivel {
 
 	public Cliente() { super(); }
 	
-	public Cliente(int id, String nome, String endereco, long cpf, long rg,
-			long telefone, double rendaMensal) {
-		super(id, nome, endereco, cpf, rg, telefone);
+	public Cliente(int id, String nome, long cpf) {
+		super(id, nome, cpf);
 
 		this.rendaMensal = rendaMensal;
 	}
@@ -30,8 +29,8 @@ public class Cliente extends Pessoa implements Imprimivel {
 
 	@Override
 	public String imprimeEmLista() {
-		return String.format("%d\t%s\t%s\t%d\t%d\t%d%.2f", getId(), getNome(), getEndereco(), getCpf(), 
-				getRg(), getTelefone(),	getRendaMensal());
+		return String.format("%d\t%s\t%d\t%d%.2f", getId(), getNome(), getCpf(), 
+				getRendaMensal());
 	}
 
 	@Override

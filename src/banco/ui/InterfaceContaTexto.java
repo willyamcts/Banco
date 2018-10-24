@@ -40,7 +40,7 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 		System.out.print("Insira o ID do autor: ");
 		int idAutor = entrada.nextInt();
 		
-		Cliente cliente = clienteDao.getByKey(idAutor);
+		Cliente autor = clienteDao.getByKey(idAutor);
 		
 		return new Conta(0, titulo, anoPublicacao, editora, autor);
 	}

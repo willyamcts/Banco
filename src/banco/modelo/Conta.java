@@ -42,9 +42,14 @@ public class Conta implements Imprimivel {
 		this.anoPublicacao = anoPublicacao;
 	}
 		
-	public void setCliente(String editora) {
-		this.editora = editora;
+	public Cliente getCliente() {
+		return autor;
 	}
+	
+	public void setCliente(Cliente autor) {
+		this.autor = autor;
+	}
+	
 	
 	public String getEditora() {
 		return editora;
@@ -61,9 +66,7 @@ public class Conta implements Imprimivel {
 		return "Titulo: " + getTitulo()	
 			+ "\nAno de publicação: " + getNumero()
 			+ "\nEditora: " + getEditora()
-			+ "\nCliente: " + getCliente()
-			+ String.format("\nSaldo: R$ %.2f", 
-					getSaldo());
+			+ "\nCliente: " + getCliente();
 	}
 
 	@Override
