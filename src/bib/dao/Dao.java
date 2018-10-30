@@ -1,4 +1,4 @@
-package banco.dao;
+package bib.dao;
 
 import java.util.List;
 

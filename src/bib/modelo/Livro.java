@@ -1,16 +1,16 @@
-package banco.modelo;
+package bib.modelo;
 
 
-public class Conta implements Imprimivel {
+public class Livro implements Imprimivel {
 	private int id;
 	private String titulo;
 	private int anoPublicacao;
 	private String editora;
 	private Cliente autor;
 	
-	public Conta() { }
+	public Livro() { }
 	
-	public Conta(int id, String titulo, int anoPublicacao, String editora, Cliente autor) {
+	public Livro(int id, String titulo, int anoPublicacao, String editora, Cliente autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.anoPublicacao = anoPublicacao;

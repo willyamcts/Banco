@@ -1,4 +1,4 @@
-package banco.dao;
+package bib.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import banco.modelo.Cliente;
-import banco.modelo.Conta;
+import bib.modelo.Cliente;
+import bib.modelo.Livro;
 
-public class ContaDao implements Dao<Conta> {
+public class LivroDao implements Dao<Livro> {
 	
 	private static final String GET_BY_ID = "SELECT * FROM livro NATURAL JOIN autor WHERE id = ?";
 	private static final String GET_ALL = "SELECT * FROM livro NATURAL JOIN autor";
@@ -21,7 +21,7 @@ public class ContaDao implements Dao<Conta> {
 			+ "editora = ? WHERE autor = ?";
 	private static final String DELETE = "DELETE FROM livro WHERE id = ?";
 	
-	public ContaDao() {
+	public LivroDao() {
 		try {
 			createTable();
 		} catch (SQLException e) {
@@ -35,6 +35,7 @@ public class ContaDao implements Dao<Conta> {
 	            + "   titulo      VARCHAR(50),"
 	            + "   anoPublicacao   INTEGER,"
 	            + "   editora	   VARCHAR(50),"
+	            + "	  autor_id		INTEGER,"
 	            + "   FOREIGN KEY (autor_id) REFERENCES autor(id),"
 	            + "   PRIMARY KEY (id))";
 	    
@@ -45,9 +46,9 @@ public class ContaDao implements Dao<Conta> {
 	}
 	
 	
-	private Conta getContaFromRS(ResultSet rs) throws SQLException
+	private Livro getContaFromRS(ResultSet rs) throws SQLException
     {
-		Conta conta = new Conta();
+		Livro conta = new Livro();
 			
 		conta.setId( rs.getInt("id") );
 		conta.setTitulo( rs.getString("titulo") );
@@ -60,12 +61,12 @@ public class ContaDao implements Dao<Conta> {
     }
 	
 	@Override
-	public Conta getByKey(int id) {
+	public Livro getByKey(int id) {
 		Connection conn = DbConnection.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		Conta conta = null;
+		Livro conta = null;
 		
 		try {
 			stmt = conn.prepareStatement(GET_BY_ID);
@@ -85,12 +86,12 @@ public class ContaDao implements Dao<Conta> {
 	}
 
 	@Override
-	public List<Conta> getAll() {
+	public List<Livro> getAll() {
 		Connection conn = DbConnection.getConnection();
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		List<Conta> conta = new ArrayList<>();
+		List<Livro> conta = new ArrayList<>();
 		
 		try {
 			stmt = conn.createStatement();
@@ -111,22 +112,24 @@ public class ContaDao implements Dao<Conta> {
 	}
 
 	@Override
-	public void insert(Conta conta) {
+	public void insert(Livro livro) {
 		Connection conn = DbConnection.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
 			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, conta.getId());
-			stmt.setInt(2, conta.getCliente().getId());
-			stmt.setInt(3, conta.getNumero());
+			stmt.setInt(1, livro.getId());
+			stmt.setString(2, livro.getTitulo());
+			stmt.setInt(3, livro.getNumero());
+			stmt.setString(4, livro.getEditora());
+			stmt.setInt(5, livro.getCliente().getId());
 			
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
 			
 			if (rs.next()) {
-				conta.setId(rs.getInt(1));
+				livro.setId(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -156,7 +159,7 @@ public class ContaDao implements Dao<Conta> {
 	}
 
 	@Override
-	public void update(Conta conta) {
+	public void update(Livro conta) {
 		Connection conn = DbConnection.getConnection();
 		
 		PreparedStatement stmt = null;

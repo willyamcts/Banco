@@ -1,13 +1,13 @@
-package banco.modelo;
+package bib.modelo;
 
-public class Pessoa {
+public class Autor {
 	private int id;
 	private String nome;
 	private long cpf;
 	
-	public Pessoa() { }
+	public Autor() { }
 	
-	public Pessoa(int id, String nome, long cpf) {
+	public Autor(int id, String nome, long cpf) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;

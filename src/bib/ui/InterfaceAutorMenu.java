@@ -1,20 +1,20 @@
-package banco.ui;
+package bib.ui;
 
 import java.util.List;
 
-import banco.dao.ClienteDao;
-import banco.modelo.Cliente;
+import bib.dao.AutorDao;
+import bib.modelo.Cliente;
 
-public class InterfaceClienteTexto extends InterfaceModeloTexto {
+public class InterfaceAutorMenu extends InterfaceModeloTexto {
 	
-	private ClienteDao dao;
+	private AutorDao dao;
 	
-	public InterfaceClienteTexto() {
+	public InterfaceAutorMenu() {
 		super();
-		dao = new ClienteDao();
+		dao = new AutorDao();
 	}
 	
-	private Cliente obtemDadosCliente(Cliente cliente) {
+	private Cliente obtemDadosAutor(Cliente cliente) {
 		
 		System.out.print("Insira o nome do autor: ");
 		String nome = entrada.nextLine();
@@ -33,7 +33,7 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 		System.out.println("Adicionar autor");
 		System.out.println();
 		
-		Cliente novoCliente = obtemDadosCliente(null);	
+		Cliente novoCliente = obtemDadosAutor(null);	
 		dao.insert(novoCliente);
 		
 	}
@@ -66,7 +66,7 @@ public class InterfaceClienteTexto extends InterfaceModeloTexto {
 		
 		Cliente clienteAModifcar = dao.getByKey(id);
 		
-		Cliente novoCliente = obtemDadosCliente(clienteAModifcar);
+		Cliente novoCliente = obtemDadosAutor(clienteAModifcar);
 		
 		novoCliente.setId(id);
 		

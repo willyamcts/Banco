@@ -1,4 +1,4 @@
-package banco.dao;
+package bib.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import banco.modelo.Cliente;
+import bib.modelo.Cliente;
 
-public class ClienteDao implements Dao<Cliente> {
+public class AutorDao implements Dao<Cliente> {
 	
 	private static final String GET_BY_ID = "SELECT * FROM autor WHERE id = ?";
 	private static final String GET_ALL = "SELECT * FROM autor";
@@ -19,7 +19,7 @@ public class ClienteDao implements Dao<Cliente> {
 	private static final String UPDATE = "UPDATE autor SET id = ?, nome = ?, cpf = ?";
 	private static final String DELETE = "DELETE FROM autor WHERE id = ?";
 	
-	public ClienteDao() {
+	public AutorDao() {
 		try {
 			createTable();
 		} catch (SQLException e) {

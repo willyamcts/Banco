@@ -1,33 +1,33 @@
-package banco.ui;
+package bib.ui;
 
 import java.util.List;
 
-import banco.dao.ClienteDao;
-import banco.dao.ContaDao;
-import banco.modelo.Cliente;
-import banco.modelo.Conta;
+import bib.dao.AutorDao;
+import bib.dao.LivroDao;
+import bib.modelo.Cliente;
+import bib.modelo.Livro;
 
-public class InterfaceContaTexto extends InterfaceModeloTexto {
+public class InterfaceLivroMenu extends InterfaceModeloTexto {
 
-	private ContaDao dao;
-	private ClienteDao clienteDao;
+	private LivroDao dao;
+	private AutorDao clienteDao;
 	
-	public InterfaceContaTexto() {
+	public InterfaceLivroMenu() {
 		super();
-		dao = new ContaDao();
-		clienteDao = new ClienteDao();
+		dao = new LivroDao();
+		clienteDao = new AutorDao();
 	}
 	
 	@Override
 	public void adicionar() {
-		System.out.println("Adicionar conta");
+		System.out.println("Adicionar livro");
 		System.out.println();
 		
-		Conta novaConta = obtemDadosConta(null);	
+		Livro novaConta = obtemDadosConta(null);	
 		dao.insert(novaConta);
 	}
 
-	private Conta obtemDadosConta(Conta conta) {
+	private Livro obtemDadosConta(Livro conta) {
 		System.out.print("Insira o titulo do livro: ");
 		String titulo = entrada.nextLine();
 		
@@ -42,19 +42,19 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 		
 		Cliente autor = clienteDao.getByKey(idAutor);
 		
-		return new Conta(0, titulo, anoPublicacao, editora, autor);
+		return new Livro(0, titulo, anoPublicacao, editora, autor);
 	}
 
 	@Override
 	public void listarTodos() {
-		List<Conta> contas = dao.getAll();
+		List<Livro> contas = dao.getAll();
 		
 		System.out.println("Lista de livros: ");
 		System.out.println();
 		
 		System.out.println("id\tTitulo\tAno de publicacao\tEditora\tAutor");
 		
-		for (Conta conta : contas) {
+		for (Livro conta : contas) {
 			imprimeItem(conta);
 		}
 	}
@@ -70,9 +70,9 @@ public class InterfaceContaTexto extends InterfaceModeloTexto {
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		
-		Conta contaAModificar = dao.getByKey(id);
+		Livro contaAModificar = dao.getByKey(id);
 		
-		Conta novaConta = obtemDadosConta(contaAModificar);
+		Livro novaConta = obtemDadosConta(contaAModificar);
 		
 		novaConta.setId(id);
 		

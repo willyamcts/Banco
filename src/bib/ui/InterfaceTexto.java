@@ -1,4 +1,4 @@
-package banco.ui;
+package bib.ui;
 
 import java.util.Scanner;
 
@@ -78,7 +78,7 @@ public class InterfaceTexto {
 				estadoAtual = opcao == OP_CLIENTE ? Estado.CLIENTE : Estado.CONTA;
 			} else {
 				subMenu = estadoAtual == Estado.CLIENTE ? 
-						new InterfaceClienteTexto() : new InterfaceContaTexto();
+						new InterfaceAutorMenu() : new InterfaceLivroMenu();
 				
 				switch (opcao) {
 				case OP_ADICIONAR:

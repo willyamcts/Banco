@@ -1,9 +1,9 @@
-package banco.ui;
+package bib.ui;
 
 import java.util.List;
 import java.util.Scanner;
 
-import banco.modelo.Imprimivel;
+import bib.modelo.Imprimivel;
 
 abstract public class InterfaceModeloTexto {
 	abstract public void adicionar();
