@@ -4,7 +4,7 @@ import java.util.List;
 
 import bib.dao.AutorDao;
 import bib.dao.LivroDao;
-import bib.modelo.Cliente;
+import bib.modelo.Autor;
 import bib.modelo.Livro;
 
 public class InterfaceLivroMenu extends InterfaceModeloTexto {
@@ -40,7 +40,7 @@ public class InterfaceLivroMenu extends InterfaceModeloTexto {
 		System.out.print("Insira o ID do autor: ");
 		int idAutor = entrada.nextInt();
 		
-		Cliente autor = clienteDao.getByKey(idAutor);
+		Autor autor = clienteDao.getByKey(idAutor);
 		
 		return new Livro(0, titulo, anoPublicacao, editora, autor);
 	}

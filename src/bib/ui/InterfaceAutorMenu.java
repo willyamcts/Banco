@@ -3,7 +3,7 @@ package bib.ui;
 import java.util.List;
 
 import bib.dao.AutorDao;
-import bib.modelo.Cliente;
+import bib.modelo.Autor;
 
 public class InterfaceAutorMenu extends InterfaceModeloTexto {
 	
@@ -14,7 +14,7 @@ public class InterfaceAutorMenu extends InterfaceModeloTexto {
 		dao = new AutorDao();
 	}
 	
-	private Cliente obtemDadosAutor(Cliente cliente) {
+	private Autor obtemDadosAutor(Autor autor) {
 		
 		System.out.print("Insira o nome do autor: ");
 		String nome = entrada.nextLine();
@@ -23,7 +23,7 @@ public class InterfaceAutorMenu extends InterfaceModeloTexto {
 		long cpf = entrada.nextLong();
 		entrada.nextLine();
 		
-		Cliente novoAutor = new Cliente(0, nome, cpf);
+		Autor novoAutor = new Autor(0, nome, cpf);
 		
 		return novoAutor;
 	}
@@ -33,22 +33,22 @@ public class InterfaceAutorMenu extends InterfaceModeloTexto {
 		System.out.println("Adicionar autor");
 		System.out.println();
 		
-		Cliente novoCliente = obtemDadosAutor(null);	
+		Autor novoCliente = obtemDadosAutor(null);	
 		dao.insert(novoCliente);
 		
 	}
 
 	@Override
 	public void listarTodos() {
-		List<Cliente> clientes = dao.getAll();
+		List<Autor> clientes = dao.getAll();
 		
 		System.out.println("Lista de autores");
 		System.out.println();
 		
 		System.out.println("id\tNome\tCPFtRenda Mensal");
 		
-		for (Cliente cliente : clientes) {
-			imprimeItem(cliente);
+		for (Autor autor : clientes) {
+			imprimeItem(autor);
 		}
 		
 	}
@@ -64,9 +64,9 @@ public class InterfaceAutorMenu extends InterfaceModeloTexto {
 		int id = entrada.nextInt();
 		entrada.nextLine();
 		
-		Cliente clienteAModifcar = dao.getByKey(id);
+		Autor clienteAModifcar = dao.getByKey(id);
 		
-		Cliente novoCliente = obtemDadosAutor(clienteAModifcar);
+		Autor novoCliente = obtemDadosAutor(clienteAModifcar);
 		
 		novoCliente.setId(id);
 		

@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import bib.modelo.Cliente;
+import bib.modelo.Autor;
 
-public class AutorDao implements Dao<Cliente> {
+public class AutorDao implements Dao<Autor> {
 	
 	private static final String GET_BY_ID = "SELECT * FROM autor WHERE id = ?";
 	private static final String GET_ALL = "SELECT * FROM autor";
@@ -44,9 +44,9 @@ public class AutorDao implements Dao<Cliente> {
 	}
 	
 	
-	private Cliente getClienteFromRS(ResultSet rs) throws SQLException
+	private Autor getClienteFromRS(ResultSet rs) throws SQLException
     {
-		Cliente cliente = new Cliente();
+		Autor cliente = new Autor();
 			
 		cliente.setId( rs.getInt("id") );
 		cliente.setNome( rs.getString("nome") );
@@ -56,10 +56,10 @@ public class AutorDao implements Dao<Cliente> {
     }
 	
 	@Override
-	public Cliente getByKey(int id) {
+	public Autor getByKey(int id) {
 		Connection conn = DbConnection.getConnection();
 		
-		Cliente cliente = null;
+		Autor cliente = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -81,10 +81,10 @@ public class AutorDao implements Dao<Cliente> {
 	}
 
 	@Override
-	public List<Cliente> getAll() {
+	public List<Autor> getAll() {
 		Connection conn = DbConnection.getConnection();
 		
-		List<Cliente> clientes = new ArrayList<>();
+		List<Autor> clientes = new ArrayList<>();
 		Statement stmt = null;
 		ResultSet rs = null;
 		
@@ -107,7 +107,7 @@ public class AutorDao implements Dao<Cliente> {
 	}
 
 	@Override
-	public void insert(Cliente cliente) {
+	public void insert(Autor cliente) {
 		Connection conn = DbConnection.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -150,7 +150,7 @@ public class AutorDao implements Dao<Cliente> {
 	}
 
 	@Override
-	public void update(Cliente cliente) {
+	public void update(Autor cliente) {
 		Connection conn = DbConnection.getConnection();
 		PreparedStatement stmt = null;
 		

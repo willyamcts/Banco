@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import bib.modelo.Cliente;
+import bib.modelo.Autor;
 import bib.modelo.Livro;
 
 public class LivroDao implements Dao<Livro> {
@@ -54,7 +54,7 @@ public class LivroDao implements Dao<Livro> {
 		conta.setTitulo( rs.getString("titulo") );
 		conta.setNumero( rs.getInt("anoPublicacao"));
 		conta.setEditora( rs.getString("editora") );
-		conta.setCliente( new Cliente(rs.getInt("id"), rs.getString("nome"), 
+		conta.setCliente( new Autor(rs.getInt("id"), rs.getString("nome"), 
 				rs.getLong("cpf")) );
 	
 		return conta;
