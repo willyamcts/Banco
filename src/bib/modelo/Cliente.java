@@ -2,16 +2,14 @@ package bib.modelo;
 
 
 public class Cliente extends Autor implements Imprimivel {
-	private double rendaMensal;
 
 	public Cliente() { super(); }
 	
 	public Cliente(int id, String nome, long cpf) {
 		super(id, nome, cpf);
-
-		this.rendaMensal = rendaMensal;
 	}
 
+	/*
 	public double getRendaMensal() {
 		return rendaMensal;
 	}
@@ -19,6 +17,8 @@ public class Cliente extends Autor implements Imprimivel {
 	public void setRendaMensal(double rendaMensal) {
 		this.rendaMensal = rendaMensal;
 	}
+	*/
+
 
 	/*
 	@Override

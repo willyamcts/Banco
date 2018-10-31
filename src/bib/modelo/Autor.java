@@ -1,6 +1,6 @@
 package bib.modelo;
 
-public class Autor {
+public class Autor implements Imprimivel {
 	private int id;
 	private String nome;
 	private long cpf;
@@ -48,6 +48,16 @@ public class Autor {
 
 	}
 	
+	@Override
+	public String imprimeEmLista() {
+		return String.format("%d\t%s\t%d", getId(), getNome(), getCpf());
+	}
+
+	@Override
+	public String[] getColunas() {
+		String[] colunas = {"id", "Nome", "CPF"};
+		return colunas;
+	}
 	
 	
 }

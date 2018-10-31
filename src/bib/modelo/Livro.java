@@ -6,11 +6,11 @@ public class Livro implements Imprimivel {
 	private String titulo;
 	private int anoPublicacao;
 	private String editora;
-	private Cliente autor;
+	private Autor autor;
 	
 	public Livro() { }
 	
-	public Livro(int id, String titulo, int anoPublicacao, String editora, Cliente autor) {
+	public Livro(int id, String titulo, int anoPublicacao, String editora, Autor autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.anoPublicacao = anoPublicacao;
@@ -42,11 +42,11 @@ public class Livro implements Imprimivel {
 		this.anoPublicacao = anoPublicacao;
 	}
 		
-	public Cliente getCliente() {
+	public Autor getCliente() {
 		return autor;
 	}
 	
-	public void setCliente(Cliente autor) {
+	public void setCliente(Autor autor) {
 		this.autor = autor;
 	}
 	
@@ -66,7 +66,7 @@ public class Livro implements Imprimivel {
 		return "Titulo: " + getTitulo()	
 			+ "\nAno de publicação: " + getNumero()
 			+ "\nEditora: " + getEditora()
-			+ "\nCliente: " + getCliente();
+			+ "\nAutor: " + getCliente();
 	}
 
 	@Override

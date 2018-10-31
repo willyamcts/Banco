@@ -14,8 +14,8 @@ public class AutorDao implements Dao<Cliente> {
 	
 	private static final String GET_BY_ID = "SELECT * FROM autor WHERE id = ?";
 	private static final String GET_ALL = "SELECT * FROM autor";
-	private static final String INSERT = "INSERT INTO autor (id, nome, cpf) "
-			+ "VALUES (?, ?, ?)";
+	private static final String INSERT = "INSERT INTO autor (nome, cpf) "
+			+ "VALUES (?, ?)";
 	private static final String UPDATE = "UPDATE autor SET id = ?, nome = ?, cpf = ?";
 	private static final String DELETE = "DELETE FROM autor WHERE id = ?";
 	
@@ -24,7 +24,6 @@ public class AutorDao implements Dao<Cliente> {
 			createTable();
 		} catch (SQLException e) {
 			throw new RuntimeException("Erro ao criar tabela no banco.", e);
-			//e.printStackTrace();
 		}
 	}
 	
@@ -52,7 +51,6 @@ public class AutorDao implements Dao<Cliente> {
 		cliente.setId( rs.getInt("id") );
 		cliente.setNome( rs.getString("nome") );
 		cliente.setCpf( rs.getLong("cpf") );
-		//cliente.setRendaMensal( rs.getDouble("renda_mensal") );
 	
 		return cliente;
     }
@@ -160,8 +158,6 @@ public class AutorDao implements Dao<Cliente> {
 			stmt = conn.prepareStatement(UPDATE);
 			stmt.setString(1, cliente.getNome());
 			stmt.setLong(3, cliente.getCpf());
-			stmt.setDouble(6, cliente.getRendaMensal());
-			stmt.setInt(7, cliente.getId());
 			
 			stmt.executeUpdate();
 			

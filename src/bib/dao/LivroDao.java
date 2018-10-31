@@ -18,7 +18,7 @@ public class LivroDao implements Dao<Livro> {
 	private static final String INSERT = "INSERT INTO livro (id, titulo, anoPublicacao, editora, autor) "
 			+ "VALUES (?, ?, ?, ?, ?)";
 	private static final String UPDATE = "UPDATE livro SET id = ?, titulo = ?, anoPublicacao = ?, "
-			+ "editora = ? WHERE autor = ?";
+			+ "editora = ?, autor = ?";
 	private static final String DELETE = "DELETE FROM livro WHERE id = ?";
 	
 	public LivroDao() {
