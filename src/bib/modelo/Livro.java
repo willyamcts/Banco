@@ -42,11 +42,11 @@ public class Livro implements Imprimivel {
 		this.anoPublicacao = anoPublicacao;
 	}
 		
-	public Autor getCliente() {
+	public Autor getAutor() {
 		return autor;
 	}
 	
-	public void setCliente(Autor autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 	
@@ -66,13 +66,13 @@ public class Livro implements Imprimivel {
 		return "Titulo: " + getTitulo()	
 			+ "\nAno de publicação: " + getNumero()
 			+ "\nEditora: " + getEditora()
-			+ "\nAutor: " + getCliente();
+			+ "\nAutor: " + getAutor();
 	}
 
 	@Override
 	public String imprimeEmLista() {
 		return String.format("%d\t%s\t%d\t%s\t%s", getId(), getTitulo(), getNumero(), getEditora(), 
-				getCliente().getNome());
+				getAutor().getNome());
 	}
 
 	@Override

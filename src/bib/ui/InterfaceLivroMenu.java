@@ -23,22 +23,24 @@ public class InterfaceLivroMenu extends InterfaceModeloTexto {
 		System.out.println("Adicionar livro");
 		System.out.println();
 		
-		Livro novaConta = obtemDadosConta(null);	
+		Livro novaConta = obtemDadosLivro(null);	
 		dao.insert(novaConta);
 	}
 
-	private Livro obtemDadosConta(Livro conta) {
+	private Livro obtemDadosLivro(Livro conta) {
 		System.out.print("Insira o titulo do livro: ");
 		String titulo = entrada.nextLine();
 		
 		System.out.print("Insira o ano da publicação: ");
 		int anoPublicacao = entrada.nextInt();
+		entrada.nextLine();
 		
 		System.out.print("Insira a editora: ");
 		String editora = entrada.nextLine();
 		
 		System.out.print("Insira o ID do autor: ");
 		int idAutor = entrada.nextInt();
+		entrada.nextLine();
 		
 		Autor autor = clienteDao.getByKey(idAutor);
 		
@@ -72,7 +74,7 @@ public class InterfaceLivroMenu extends InterfaceModeloTexto {
 		
 		Livro contaAModificar = dao.getByKey(id);
 		
-		Livro novaConta = obtemDadosConta(contaAModificar);
+		Livro novaConta = obtemDadosLivro(contaAModificar);
 		
 		novaConta.setId(id);
 		

@@ -15,10 +15,10 @@ public class LivroDao implements Dao<Livro> {
 	
 	private static final String GET_BY_ID = "SELECT * FROM livro NATURAL JOIN autor WHERE id = ?";
 	private static final String GET_ALL = "SELECT * FROM livro NATURAL JOIN autor";
-	private static final String INSERT = "INSERT INTO livro (id, titulo, anoPublicacao, editora, autor) "
+	private static final String INSERT = "INSERT INTO livro (id, titulo, anoPublicacao, editora, autor_id) "
 			+ "VALUES (?, ?, ?, ?, ?)";
 	private static final String UPDATE = "UPDATE livro SET id = ?, titulo = ?, anoPublicacao = ?, "
-			+ "editora = ?, autor = ?";
+			+ "editora = ?, autor_id = ?";
 	private static final String DELETE = "DELETE FROM livro WHERE id = ?";
 	
 	public LivroDao() {
@@ -54,7 +54,7 @@ public class LivroDao implements Dao<Livro> {
 		conta.setTitulo( rs.getString("titulo") );
 		conta.setNumero( rs.getInt("anoPublicacao"));
 		conta.setEditora( rs.getString("editora") );
-		conta.setCliente( new Autor(rs.getInt("id"), rs.getString("nome"), 
+		conta.setAutor( new Autor(rs.getInt("id"), rs.getString("nome"), 
 				rs.getLong("cpf")) );
 	
 		return conta;
@@ -123,7 +123,7 @@ public class LivroDao implements Dao<Livro> {
 			stmt.setString(2, livro.getTitulo());
 			stmt.setInt(3, livro.getNumero());
 			stmt.setString(4, livro.getEditora());
-			stmt.setInt(5, livro.getCliente().getId());
+			stmt.setInt(5, livro.getAutor().getId());
 			
 			stmt.executeUpdate();
 			rs = stmt.getGeneratedKeys();
@@ -167,7 +167,7 @@ public class LivroDao implements Dao<Livro> {
 		try {
 			stmt = conn.prepareStatement(UPDATE);
 			stmt.setString(1, conta.getTitulo());
-			stmt.setInt(2, conta.getCliente().getId());
+			stmt.setInt(2, conta.getAutor().getId());
 			stmt.setInt(3, conta.getNumero());
 			stmt.setInt(5, conta.getId());
 			
